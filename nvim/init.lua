@@ -39,25 +39,10 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
--- nvim-tree binds 
-vim.api.nvim_set_keymap('n', '<leader>e', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-h>', '<C-w>h', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-j>', '<C-w>j', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-k>', '<C-w>k', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l', { noremap = true, silent = true })
 
--- nvim-ale config
-vim.cmd [[
-  let g:ale_linters = {
-      \ 'typescript': ['ts_ls'],
-      \ 'typescriptreact': ['ts_ls'],
-      \ }
-  let g:ale_fixers = {
-      \ 'typescript': ['prettier'],
-      \ 'typescriptreact': ['prettier'],
-      \ }
-  let g:ale_fix_on_save = 1
-]]
+
+-- remap alternate file
+vim.keymap.set("n", "ga", "<C-^>")
 
 -- telescope binds
 local builtin = require('telescope.builtin')
