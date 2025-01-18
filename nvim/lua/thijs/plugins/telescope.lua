@@ -12,7 +12,7 @@ return {
         }
       }
     }
-    vim.keymap.set("n", "<space>en", function()
+    vim.keymap.set("n", "<leader>en", function()
       require('telescope.builtin').find_files {
         cwd = vim.fn.stdpath("config")
       }

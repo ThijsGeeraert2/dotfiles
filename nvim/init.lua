@@ -1,7 +1,6 @@
 vim.g.mapleader = ' '
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
-
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   vim.fn.system({
@@ -36,6 +35,7 @@ vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
+vim.opt.scrolloff = 8
 
 
 -- extra keybinds
@@ -46,7 +46,9 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
-
+-- quicklist binds
+vim.keymap.set("n", "<M-j>", "<cmd>cnext<CR>")
+vim.keymap.set("n", "<M-k>", "<cmd>cprev<CR>")
 
 -- remap alternate file
 vim.keymap.set("n", "ga", "<C-^>")
