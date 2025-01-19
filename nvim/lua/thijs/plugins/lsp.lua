@@ -2,6 +2,8 @@ return {
   {
     "neovim/nvim-lspconfig",
     dependencies = {
+      "williamboman/mason.nvim",
+      "williamboman/mason-lspconfig.nvim",
       'saghen/blink.cmp',
       {
         "folke/lazydev.nvim",
@@ -17,8 +19,20 @@ return {
     },
     config = function()
       local capabilities = require('blink.cmp').get_lsp_capabilities()
-      require("lspconfig").lua_ls.setup { capabilities = capabilities }
-      require("lspconfig").ts_ls.setup {}
-    end,
+      require("mason").setup()
+      require("mason-lspconfig").setup()
+      require("mason-lspconfig").setup_handlers {
+        function (server_name) -- default handler (optional)
+          require("lspconfig")[server_name].setup {
+            capabilities = capabilities,
+            settings = {
+              Lua = {
+                diagnostics = { globals = {'vim'} } -- to remove the unkown global 'vim' warning
+              }
+            }
+          }
+        end
+      }
+    end
   }
 }
