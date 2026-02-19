@@ -60,3 +60,10 @@ vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
+
+vim.keymap.set(
+    "n",
+    "<leader>d",
+    function() vim.diagnostic.open_float({ focusable = true }) end,
+    { desc = "Expand an Error into a float" }
+)
